@@ -6,6 +6,7 @@ namespace LoggingKata.Test
     public class TacoParserTests
     {
         [Fact]
+        
         public void ShouldDoSomething()
         {
             // TODO: Complete Something, if anything
@@ -30,14 +31,27 @@ namespace LoggingKata.Test
             //       each representing a TacoBell location
 
             //Arrange
-
+            var test = new TacoParser();
             //Act
+            var actual = test.Parse(line).Location.Longitude;
 
             //Assert
+            Assert.Equal(expected, actual);
         }
 
 
         //TODO: Create a test ShouldParseLatitude
+        [Theory]
+        [InlineData("34.073638, -84.677017, Taco Bell Acwort...", 34.073638)]
+        public void ShouldParseLatitude(string line, double expected)
+        {
+            var test = new TacoParser();
+
+            var actual = test.Parse(line).Location.Latitude;
+
+            Assert.Equal(expected, actual);
+        
+        }
 
     }
 }
